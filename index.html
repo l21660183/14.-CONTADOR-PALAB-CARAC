@@ -1,0 +1,88 @@
+<!-- ANGIE XIMENA OLVERA ALVAREZ -->
+<!-- ACTIVIDAD 14 CONTADOR DE PALABRAS Y CARACTERES -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Palabras y Caracteres</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            max-width: 600px;
+            height: 150px;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        textarea:hover, textarea:focus {
+            border-color: #ff0000;
+            box-shadow: 3px 3px 12px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+        .counter {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+        }
+        .counter p {
+            font-size: 18px;
+            color: #555;
+        }
+        #wordCount, #charCount {
+            font-weight: bold;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador de Palabras y Caracteres</h1>
+    
+    <!-- Área de texto donde el usuario ingresa su texto -->
+    <textarea id="textInput" placeholder="Ingresa tu texto aquí..."></textarea>
+    
+    <!-- Contadores para palabras y caracteres -->
+    <div class="counter">
+        <p>Palabras: <span id="wordCount">0</span></p>
+        <p>Caracteres: <span id="charCount">0</span></p>
+    </div>
+
+    <!-- JavaScript que cuenta palabras y caracteres -->
+    <script>
+        const textInput = document.getElementById('textInput'); // Selecciona el textarea
+        const wordCount = document.getElementById('wordCount'); // Selecciona el contador de palabras
+        const charCount = document.getElementById('charCount'); // Selecciona el contador de caracteres
+
+        // Añade un event listener para detectar cambios en el textarea
+        textInput.addEventListener('input', () => {
+            const text = textInput.value; // Obtiene el texto del textarea
+
+            // Divide el texto en palabras eliminando espacios extras y cuenta solo palabras válidas
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            
+            // Filtra el texto para eliminar los espacios y cuenta los caracteres
+            const textWithoutSpaces = text.replace(/\s+/g, '');
+            
+            wordCount.textContent = words.length; // Actualiza el contador de palabras
+            charCount.textContent = textWithoutSpaces.length;  // Actualiza el contador de caracteres (sin espacios)
+        });
+    </script>
+</body>
+</html>
